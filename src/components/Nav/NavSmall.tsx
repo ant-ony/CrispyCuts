@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Menu, X } from "react-feather";
 import navItems from "./navItems";
 import { MenuContainer, NavLinkSmall } from "./Styles";
-import Hamburger from "../Burger";
+import Hamburger from "./Burger";
 import { StyledMenu, StyledLink } from "./Styles";
 
 import { useOnClickOutside } from "../../hooks";
@@ -42,12 +42,11 @@ export const NavSmall = () => {
   // );
 
   return (
-    <div ref={node}>
+    <div className="dn-1" ref={node}>
       <StyledMenu open={open}>
-        <StyledLink onClick={() => close()}>Haircut Whenever</StyledLink>
-        <StyledLink onClick={() => close()}>How it works</StyledLink>
-        <StyledLink onClick={() => close()}>Our cities</StyledLink>
-        <StyledLink onClick={() => close()}>Sign up</StyledLink>
+        {navItems.map((i) => (
+          <StyledLink href={i.link} onClick={() => close()}>{i.title}</StyledLink>
+        ))}
       </StyledMenu>
       <Hamburger open={open} setOpen={setOpen} />
     </div>
