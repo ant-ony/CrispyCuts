@@ -1,26 +1,28 @@
-import React from 'react';
-import { StyledMenu } from './Menu.styled';
+import React, { useState, useRef } from "react";
+
+import Hamburger from "../Burger/Burger";
+import { StyledMenu, StyledLink } from "./Menu.styled";
+
+import { useOnClickOutside } from "../../hooks";
 
 const Menu = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const node = useRef<HTMLDivElement>(null);
+  const close = () => setOpen(false);
+
+  useOnClickOutside(node, () => setOpen(false));
+
   return (
-    <StyledMenu>
-      <a href="/">
-        <span role="img" aria-label="Haircut Wherever">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
-        About us
-      </a>
-      <a href="/">
-        <span role="img" aria-label="How It Works">&#x1f4b8;</span>
-        Pricing
-        </a>
-      <a href="/">
-        <span role="img" aria-label="Our Cities">&#x1f4e9;</span>
-        Contact
-        </a>
-      <a href="/">
-        <span role="img" aria-label="Sign Up">&#x1f4e9;</span>
-        Contact
-        </a>
-    </StyledMenu>
-  )
-}
+    <div ref={node}>
+      <StyledMenu open={open}>
+        <StyledLink onClick={() => close()}>Haircut Whenever</StyledLink>
+        <StyledLink onClick={() => close()}>How it works</StyledLink>
+        <StyledLink onClick={() => close()}>Our cities</StyledLink>
+        <StyledLink onClick={() => close()}>Sign up</StyledLink>
+      </StyledMenu>
+      <Hamburger open={open} setOpen={setOpen} />
+    </div>
+  );
+};
+
 export default Menu;

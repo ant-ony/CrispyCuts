@@ -1,40 +1,34 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from "styled-components";
+import { colors } from "../../global";
 
-export const StyledMenu = styled.nav`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: ${({ theme }) => theme.primaryLight};
-  height: 100vh;
-  text-align: left;
-  padding: 2rem;
-  position: absolute;
+export const StyledMenu = styled.nav<{ open: boolean }>`
   top: 0;
   left: 0;
+  height: 100vh;
+  width: 35vw;
+  position: fixed;
+  background-color: ${colors.white};
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  padding: 10rem 0;
+
   transition: transform 0.3s ease-in-out;
-  
-  @media (max-width: ${({ theme }) => theme.mobile}) {
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+
+  @media (max-width: 600px) {
     width: 100%;
   }
+`;
 
-  a {
-    font-size: 2rem;
-    text-transform: uppercase;
-    padding: 2rem 0;
-    font-weight: bold;
-    letter-spacing: 0.5rem;
-    color: ${({ theme }) => theme.primaryDark};
-    text-decoration: none;
-    transition: color 0.3s linear;
-    
-    @media (max-width: ${({ theme }) => theme.mobile}) {
-      font-size: 1.5rem;
-      text-align: center;
-    }
+export const StyledLink = styled.a`
+  padding: 0 2rem;
+  font-size: 2rem;
+  color: ${colors.lightbrownie};
+  text-decoration: none;
 
-    &:hover {
-      color: ${({ theme }) => theme.primaryHover};
-    }
+  :hover {
+    color: ${colors.yellowmellow};
   }
 `;

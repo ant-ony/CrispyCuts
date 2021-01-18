@@ -1,14 +1,18 @@
-import React from 'react';
-import { StyledBurger } from './Burger.styled';
+import React from "react";
 
-const Burger = () => {
-  return (
-    <StyledBurger>
-      <div />
-      <div />
-      <div />
-    </StyledBurger>
-  )
-}
+import { StyledHamburger } from "./Burger.styled";
 
-export default Burger;
+export type Props = {
+  open: boolean;
+  setOpen: (v: boolean) => void;
+};
+
+const Hamburger = (props: Props) => (
+  <StyledHamburger open={props.open} onClick={() => props.setOpen(!props.open)}>
+    <div />
+    <div />
+    <div />
+  </StyledHamburger>
+);
+
+export default Hamburger;
