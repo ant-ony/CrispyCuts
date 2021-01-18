@@ -72,11 +72,11 @@ export const StyledHamburger = styled.button<{ open: boolean }>`
   padding: 0;
   background: transparent;
 
-  display: flex;
+  display: none;  // was flex
   flex-direction: column;
   justify-content: space-around;
 
-  border: none;
+  border: none;  // was flex
   cursor: pointer;
   outline: none;
   z-index: 1;
@@ -84,6 +84,10 @@ export const StyledHamburger = styled.button<{ open: boolean }>`
   @media (max-width: 600px) {
     left: ${({ open }) => (open ? "initial" : "3vw")};
     right: ${({ open }) => (open ? "2vw" : "initial")};
+  }
+
+  @media (max-width: 960px) {
+    display: flex // maybe flex
   }
 
   div {
@@ -135,10 +139,10 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
 export const StyledLink = styled.a`
   padding: 0 2rem;
   font-size: 2rem;
-  color: ${colors.lightbrownie};
+  color: ${colors.mocha};
   text-decoration: none;
 
   :hover {
-    color: ${colors.yellowmellow};
+    color: ${colors.yellow};
   }
 `;
