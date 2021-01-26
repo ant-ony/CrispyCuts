@@ -38,7 +38,7 @@ type CardProps = {
   description: string;
 };
 
-const Card = ({ title, description }: CardProps) => {
+export const CardA = ({ title, description }: CardProps) => {
   return (
     <div>
       <div className="big-div">
